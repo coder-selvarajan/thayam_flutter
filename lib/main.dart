@@ -30,27 +30,6 @@ class MyApp extends StatelessWidget {
                 child: Container(),
               ),
             ),
-//            child: Row(
-//              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//              children: [
-//                Padding(
-//                  padding: EdgeInsets.all(20.0),
-//                  child: Text(
-//                    "Thayam App",
-//                    style: TextStyle(
-//                      fontSize: 20.0,
-//                      color: Colors.white,
-//                    ),
-//                  ),
-//                ),
-//                SizedBox.expand(
-//                  child: CustomPaint(
-//                    painter: Board(),
-//                    child: Container(),
-//                  ),
-//                ),
-//              ],
-//            ),
           ),
         ),
       ),
