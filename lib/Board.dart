@@ -14,9 +14,16 @@ class Board extends CustomPainter {
     commonPaint = new Paint()
       ..color = Colors.white54
       ..style = PaintingStyle.fill;
+//    commonPaint = new Paint()
+//      ..color = Color(0xAAFCE7C0)
+//      ..style = PaintingStyle.fill;
+
+    commonPaint2 = new Paint()
+      ..color = Colors.white.withOpacity(0.9)
+      ..style = PaintingStyle.fill;
 
     lightPaint = new Paint()
-      ..color = Colors.white.withOpacity(0.1)
+      ..color = Colors.white.withOpacity(0)
       ..style = PaintingStyle.fill;
 
     leftPaint = new Paint()
@@ -46,6 +53,7 @@ class Board extends CustomPainter {
 
   var whitePaint = Paint()..color = Colors.white.withOpacity(0.5);
   Paint commonPaint;
+  Paint commonPaint2;
   Paint lightPaint;
   Paint leftPaint;
   Paint topPaint;
@@ -56,6 +64,8 @@ class Board extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    print("Canvas Width: ${size.width}");
+    print("Canvas Height: ${size.height}");
     bCanvas = canvas;
     bWidth = size.width - 20;
     bHeight = size.height;
@@ -67,6 +77,64 @@ class Board extends CustomPainter {
     drawAllSquares();
     drawCornerCross();
     drawMidCross();
+    drawPawnStage();
+  }
+
+  drawPawnStage() {
+    //big circles on all four sides
+    drawCircle(leftPaint, commonStroke, leftOffset + (3 * squareWidth),
+        topOffset + (3 * squareWidth), squareWidth * 2);
+    drawCircle(topPaint, commonStroke, leftOffset + (12 * squareWidth),
+        topOffset + (3 * squareWidth), squareWidth * 2);
+    drawCircle(rightPaint, commonStroke, leftOffset + (12 * squareWidth),
+        topOffset + (12 * squareWidth), squareWidth * 2);
+    drawCircle(bottomPaint, commonStroke, leftOffset + (3 * squareWidth),
+        topOffset + (12 * squareWidth), squareWidth * 2);
+
+    //Left - inner circles
+    drawCircle(commonPaint2, commonStroke, leftOffset + (2.25 * squareWidth),
+        topOffset + (2.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (3.75 * squareWidth),
+        topOffset + (2.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (2.25 * squareWidth),
+        topOffset + (3.75 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (3.75 * squareWidth),
+        topOffset + (3.75 * squareWidth), squareWidth * 0.6);
+
+    //Top - inner circles
+    drawCircle(commonPaint2, commonStroke, leftOffset + (11.25 * squareWidth),
+        topOffset + (2.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (12.75 * squareWidth),
+        topOffset + (2.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (11.25 * squareWidth),
+        topOffset + (3.75 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (12.75 * squareWidth),
+        topOffset + (3.75 * squareWidth), squareWidth * 0.6);
+
+    //Right - inner circles
+    drawCircle(commonPaint2, commonStroke, leftOffset + (11.25 * squareWidth),
+        topOffset + (11.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (12.75 * squareWidth),
+        topOffset + (11.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (11.25 * squareWidth),
+        topOffset + (12.75 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (12.75 * squareWidth),
+        topOffset + (12.75 * squareWidth), squareWidth * 0.6);
+
+    //Bottom - inner circles
+    drawCircle(commonPaint2, commonStroke, leftOffset + (2.25 * squareWidth),
+        topOffset + (11.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (3.75 * squareWidth),
+        topOffset + (11.25 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (2.25 * squareWidth),
+        topOffset + (12.75 * squareWidth), squareWidth * 0.6);
+    drawCircle(commonPaint2, commonStroke, leftOffset + (3.75 * squareWidth),
+        topOffset + (12.75 * squareWidth), squareWidth * 0.6);
+
+//    drawSquare(lightPaint, commonStroke2, leftOffset + squareWidth,
+//        topOffset + squareWidth, squareWidth * 2);
+//    drawSquare(lightPaint, commonStroke2, leftOffset + (3 * squareWidth),
+//        topOffset + (3 * squareWidth), squareWidth * 2);
   }
 
   drawBoard() {
@@ -206,7 +274,7 @@ class Board extends CustomPainter {
       if (i == 0 || i == 5) {
         drawSquareWithCross(
             leftPaint,
-            commonStroke,
+            commonStroke2,
             commonStroke2,
             leftOffset + (i * squareWidth),
             topOffset + (7 * squareWidth),
@@ -308,16 +376,16 @@ class Board extends CustomPainter {
         Offset(left, top + width), Offset(left + width, top), crossStroke);
   }
 
-  drawCircle(Canvas canvas, Size size) {
-    var paint = Paint()
-      ..color = Colors.teal
-      ..strokeWidth = 5
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
+  drawCircle(
+      Paint paint, Paint stroke, double left, double top, double radius) {
+//    var paint = Paint()
+//      ..color = Colors.teal
+//      ..strokeWidth = 1
+//      ..style = PaintingStyle.stroke
+//      ..strokeCap = StrokeCap.round;
 
-    Offset center = Offset(size.width / 2, size.height / 2);
-
-    bCanvas.drawCircle(center, 100, paint);
+    bCanvas.drawCircle(Offset(left, top), radius, paint);
+    bCanvas.drawCircle(Offset(left, top), radius, stroke);
   }
 
   @override

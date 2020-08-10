@@ -6,6 +6,11 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  Size getBoardSize(BuildContext context) {
+//    var screenSize = MediaQuery.of(context).size;
+    return Size(400, 400);
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -24,11 +29,13 @@ class MyApp extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           child: SafeArea(
-            child: SizedBox.expand(
-              child: CustomPaint(
-                painter: Board(),
-                child: Container(),
-              ),
+            child: Stack(
+              children: <Widget>[
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Board(),
+                ),
+              ],
             ),
           ),
         ),
