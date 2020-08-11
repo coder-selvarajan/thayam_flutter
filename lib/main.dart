@@ -1,5 +1,7 @@
 import 'package:ThayamGame/Board.dart';
+import 'package:ThayamGame/Pawns.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 void main() {
   runApp(MyApp());
@@ -35,6 +37,10 @@ class MyApp extends StatelessWidget {
                   size: getBoardSize(context),
                   painter: Board(),
                 ),
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Pawns(),
+                )
               ],
             ),
           ),
