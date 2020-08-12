@@ -19,7 +19,7 @@ class Board extends CustomPainter {
 //      ..style = PaintingStyle.fill;
 
     commonPaint2 = new Paint()
-      ..color = Colors.white.withOpacity(0.9)
+      ..color = Colors.white.withOpacity(0.75)
       ..style = PaintingStyle.fill;
 
     lightPaint = new Paint()
@@ -70,8 +70,8 @@ class Board extends CustomPainter {
     bWidth = size.width - 20;
     bHeight = size.height;
     squareWidth = bWidth / 15;
-    leftOffset = 10;
-    topOffset = bHeight / 2 - bWidth / 2;
+    leftOffset = 0;
+    topOffset = 0;
 
     drawBoard();
     drawAllSquares();
