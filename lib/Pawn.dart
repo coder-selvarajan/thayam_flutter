@@ -5,12 +5,9 @@ import 'dart:math' as math;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
 
-class Pawns extends CustomPainter {
-  Pawns(this.leftPawn, this.topPawn, this.rightPawn, this.bottomPawn);
-  final ui.Image leftPawn;
-  final ui.Image topPawn;
-  final ui.Image rightPawn;
-  final ui.Image bottomPawn;
+class Pawn extends CustomPainter {
+  Pawn({this.pawnImage});
+  final ui.Image pawnImage;
 
   Canvas bCanvas;
   double bWidth = 0;
@@ -24,102 +21,31 @@ class Pawns extends CustomPainter {
     bHeight = size.height;
     squareWidth = bWidth / 15;
 
-    setupPlayers();
-  }
-
-  void setupPlayers() {
     double pawnWidth = squareWidth * 1.4;
     double leftAdjustment = squareWidth * 0.7;
     double topAdjustment = squareWidth * 0.9;
 
-//    bCanvas.drawRect(
-//        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
-//            (2.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth),
-//        new Paint());
-
-    // Left players
-//    paintImage(
-//        leftPawn,
-//        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
-//            (2.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
-//    paintImage(
-//        leftPawn,
-//        Rect.fromLTWH((3.75 * squareWidth) - leftAdjustment,
-//            2.25 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-//    paintImage(
-//        leftPawn,
-//        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
-//            3.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-//    paintImage(
-//        leftPawn,
-//        Rect.fromLTWH((3.75 * squareWidth) - leftAdjustment,
-//            3.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-
-    // Top players
     paintImage(
-        topPawn,
+        pawnImage,
         Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
             (2.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        topPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            2.25 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        topPawn,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            3.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        topPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            3.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+  }
 
-    // Right players
-    paintImage(
-        rightPawn,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            (11.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        rightPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            11.25 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        rightPawn,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        rightPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-
-    // Bottom players
-    paintImage(
-        bottomPawn,
-        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
-            (11.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        bottomPawn,
-        Rect.fromLTWH((3.75 * squareWidth) - leftAdjustment,
-            11.25 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        bottomPawn,
-        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
-    paintImage(
-        bottomPawn,
-        Rect.fromLTWH((3.75 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 
   void paintImage(ui.Image image, Rect outputRect) {
-    final Size imageSize = Size(102, 102);
+    final Size imageSize =
+        Size(image.width.toDouble(), image.height.toDouble());
     final FittedSizes sizes =
         applyBoxFit(BoxFit.fill, imageSize, outputRect.size);
     final Rect inputSubrect =
-        Alignment.topLeft.inscribe(sizes.source, Offset.zero & imageSize);
+        Alignment.center.inscribe(sizes.source, Offset.zero & imageSize);
     final Rect outputSubrect =
-        Alignment.topLeft.inscribe(sizes.destination, outputRect);
-//    bCanvas.drawImageRect(image, inputSubrect, outputSubrect, new Paint());
-    bCanvas.drawImageRect(image, inputSubrect, outputRect, new Paint());
+        Alignment.center.inscribe(sizes.destination, outputRect);
+    bCanvas.drawImageRect(image, inputSubrect, outputSubrect, new Paint());
   }
 
   FittedSizes applyBoxFit(BoxFit fit, Size inputSize, Size outputSize) {
@@ -189,10 +115,5 @@ class Pawns extends CustomPainter {
         break;
     }
     return FittedSizes(sourceSize, destinationSize);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
   }
 }

@@ -56,19 +56,13 @@ class MyApp extends StatelessWidget {
           child: SafeArea(
             child: Stack(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: CustomPaint(
-                    size: getBoardSize(context),
-                    painter: Board(),
-                  ),
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Board(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: CustomPaint(
-                    size: getBoardSize(context),
-                    painter: Pawns(leftPawn, topPawn, rightPawn, bottomPawn),
-                  ),
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Pawns(leftPawn, topPawn, rightPawn, bottomPawn),
                 ),
               ],
             ),
