@@ -1,34 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
-
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
+import 'package:ThayamGame/Constants.dart';
 
 class Pawn extends CustomPainter {
-  Pawn({this.pawnImage});
+  Pawn(this.pawnImage, this.leftSquarePos, this.topSquarePos);
   final ui.Image pawnImage;
-
+  final double leftSquarePos;
+  final double topSquarePos;
   Canvas bCanvas;
-  double bWidth = 0;
-  double bHeight = 0;
-  double squareWidth = 0;
 
   @override
   void paint(Canvas canvas, Size size) {
     bCanvas = canvas;
-    bWidth = size.width - 20;
-    bHeight = size.height;
-    squareWidth = bWidth / 15;
 
-    double pawnWidth = squareWidth * 1.4;
-    double leftAdjustment = squareWidth * 0.7;
-    double topAdjustment = squareWidth * 0.9;
+    double pawnWidth = bSquareWidth * 1.4;
+    double leftAdjustment = -bLeftOffset + bSquareWidth * 0.7;
+    double topAdjustment = -bTopOffset + bSquareWidth * 0.9;
 
     paintImage(
         pawnImage,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            (2.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH(
+            (leftSquarePos * bSquareWidth) - leftAdjustment,
+            (topSquarePos * bSquareWidth) - topAdjustment,
+            pawnWidth,
+            pawnWidth));
   }
 
   @override

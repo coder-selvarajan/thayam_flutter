@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
+import 'package:ThayamGame/Constants.dart';
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
@@ -13,24 +14,17 @@ class Pawns extends CustomPainter {
   final ui.Image bottomPawn;
 
   Canvas bCanvas;
-  double bWidth = 0;
-  double bHeight = 0;
-  double squareWidth = 0;
 
   @override
   void paint(Canvas canvas, Size size) {
     bCanvas = canvas;
-    bWidth = size.width - 20;
-    bHeight = size.height;
-    squareWidth = bWidth / 15;
-
     setupPlayers();
   }
 
   void setupPlayers() {
-    double pawnWidth = squareWidth * 1.4;
-    double leftAdjustment = squareWidth * 0.7;
-    double topAdjustment = squareWidth * 0.9;
+    double pawnWidth = bSquareWidth * 1.4;
+    double leftAdjustment = -bLeftOffset + (bSquareWidth * 0.7);
+    double topAdjustment = -bTopOffset + (bSquareWidth * 0.9);
 
 //    bCanvas.drawRect(
 //        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
@@ -58,56 +52,56 @@ class Pawns extends CustomPainter {
     // Top players
     paintImage(
         topPawn,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            (2.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((11.25 * bSquareWidth) - leftAdjustment,
+            (2.25 * bSquareWidth) - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         topPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            2.25 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((12.75 * bSquareWidth) - leftAdjustment,
+            2.25 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         topPawn,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            3.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((11.25 * bSquareWidth) - leftAdjustment,
+            3.75 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         topPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            3.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((12.75 * bSquareWidth) - leftAdjustment,
+            3.75 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
 
     // Right players
     paintImage(
         rightPawn,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            (11.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((11.25 * bSquareWidth) - leftAdjustment,
+            (11.25 * bSquareWidth) - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         rightPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            11.25 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((12.75 * bSquareWidth) - leftAdjustment,
+            11.25 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         rightPawn,
-        Rect.fromLTWH((11.25 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((11.25 * bSquareWidth) - leftAdjustment,
+            12.75 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         rightPawn,
-        Rect.fromLTWH((12.75 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((12.75 * bSquareWidth) - leftAdjustment,
+            12.75 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
 
     // Bottom players
     paintImage(
         bottomPawn,
-        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
-            (11.25 * squareWidth) - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((2.25 * bSquareWidth) - leftAdjustment,
+            (11.25 * bSquareWidth) - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         bottomPawn,
-        Rect.fromLTWH((3.75 * squareWidth) - leftAdjustment,
-            11.25 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((3.75 * bSquareWidth) - leftAdjustment,
+            11.25 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         bottomPawn,
-        Rect.fromLTWH((2.25 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((2.25 * bSquareWidth) - leftAdjustment,
+            12.75 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
     paintImage(
         bottomPawn,
-        Rect.fromLTWH((3.75 * squareWidth) - leftAdjustment,
-            12.75 * squareWidth - topAdjustment, pawnWidth, pawnWidth));
+        Rect.fromLTWH((3.75 * bSquareWidth) - leftAdjustment,
+            12.75 * bSquareWidth - topAdjustment, pawnWidth, pawnWidth));
   }
 
   void paintImage(ui.Image image, Rect outputRect) {

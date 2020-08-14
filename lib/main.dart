@@ -1,11 +1,12 @@
 import 'package:ThayamGame/Board.dart';
 import 'package:ThayamGame/Pawns.dart';
+import 'package:ThayamGame/Pawn.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:ui' as ui;
-
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
+import 'Constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ void main() {
 class MyApp extends StatelessWidget {
   Size getBoardSize(BuildContext context) {
 //    var screenSize = MediaQuery.of(context).size;
-    return Size(400, 400);
+    return Size(300, 300);
   }
 
   Future<ui.Image> loadImage(String imageName) async {
@@ -34,9 +35,18 @@ class MyApp extends StatelessWidget {
   ui.Image rightPawn;
   ui.Image bottomPawn;
 
+  initBoardSizes(BuildContext context) {
+    bWidth = 400; //MediaQuery.of(context).size.width - 20;
+    bHeight = bWidth;
+    bSquareWidth = bWidth / 15;
+    bLeftOffset = 8;
+    bTopOffset = 10;
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    initBoardSizes(context);
     loadPawnImage();
 
     return MaterialApp(
@@ -63,6 +73,22 @@ class MyApp extends StatelessWidget {
                 CustomPaint(
                   size: getBoardSize(context),
                   painter: Pawns(leftPawn, topPawn, rightPawn, bottomPawn),
+                ),
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Pawn(leftPawn, 2.25, 2.25),
+                ),
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Pawn(leftPawn, 2.25, 3.75),
+                ),
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Pawn(leftPawn, 3.75, 2.25),
+                ),
+                CustomPaint(
+                  size: getBoardSize(context),
+                  painter: Pawn(leftPawn, 3.75, 3.75),
                 ),
               ],
             ),
