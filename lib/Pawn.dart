@@ -8,8 +8,8 @@ import 'package:ThayamGame/Constants.dart';
 class Pawn extends CustomPainter {
   Pawn(this.pawnImage, this.leftSquarePos, this.topSquarePos);
   final ui.Image pawnImage;
-  final double leftSquarePos;
-  final double topSquarePos;
+  double leftSquarePos;
+  double topSquarePos;
   Canvas bCanvas;
 
   @override
@@ -32,6 +32,12 @@ class Pawn extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     return true;
+  }
+
+  @override
+  bool hitTest(Offset position) {
+    print(leftSquarePos);
+    leftSquarePos = 5.5;
   }
 
   void paintImage(ui.Image image, Rect outputRect) {

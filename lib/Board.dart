@@ -134,6 +134,7 @@ class Board extends CustomPainter {
 
   drawBottomTriangle(
       Paint paint, double left, double top, double width, double height) {
+    print('bottom triangle called');
     Path path = Path()
       ..moveTo(left, top + height)
       ..lineTo(left + (width / 2), top)
@@ -330,6 +331,6 @@ class Board extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
+    return true;
   }
 }
