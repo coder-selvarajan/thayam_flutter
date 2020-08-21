@@ -1,13 +1,12 @@
 import "package:flutter/material.dart";
-import 'package:ThayamGame/Constants.dart';
+import 'package:ThayamGame/constants.dart';
 
 class Board extends CustomPainter {
   Canvas bCanvas;
 
   @override
   void paint(Canvas canvas, Size size) {
-    print("Canvas Width: ${size.width}");
-    print("Canvas Height: ${size.height}");
+//    print('Board paint called');
     bCanvas = canvas;
 
     drawBoard();
@@ -134,7 +133,6 @@ class Board extends CustomPainter {
 
   drawBottomTriangle(
       Paint paint, double left, double top, double width, double height) {
-    print('bottom triangle called');
     Path path = Path()
       ..moveTo(left, top + height)
       ..lineTo(left + (width / 2), top)
@@ -331,6 +329,6 @@ class Board extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }

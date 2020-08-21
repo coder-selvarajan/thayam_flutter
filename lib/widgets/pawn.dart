@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 import 'dart:math' as math;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
-import 'package:ThayamGame/Constants.dart';
+import 'package:ThayamGame/constants.dart';
 
 class Pawn extends CustomPainter {
   Pawn(this.pawnImage, this.leftSquarePos, this.topSquarePos);

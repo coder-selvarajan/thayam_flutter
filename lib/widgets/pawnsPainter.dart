@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
-import 'package:ThayamGame/Constants.dart';
+import 'package:ThayamGame/constants.dart';
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
 
-class Pawns extends CustomPainter {
-  Pawns(this.leftPawn, this.topPawn, this.rightPawn, this.bottomPawn);
+class PawnsPainter extends CustomPainter {
+  PawnsPainter(this.leftPawn, this.topPawn, this.rightPawn, this.bottomPawn);
   final ui.Image leftPawn;
   final ui.Image topPawn;
   final ui.Image rightPawn;
