@@ -11,8 +11,10 @@ class Board extends CustomPainter {
 
     drawBoard();
     drawAllSquares();
-    drawCornerCross();
-    drawMidCross();
+    if (!testPaint) {
+      drawCornerCross();
+      drawMidCross();
+    }
     drawPawnStage();
   }
 
@@ -328,7 +330,5 @@ class Board extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'common.dart';
 
+bool testPaint = false;
 double bWidth = 0;
 double bHeight = 0;
 double bSquareWidth = 0;
 
 double bLeftOffset = 0;
 double bTopOffset = 0;
+
+List<Spot> trackLeft = [];
+List<Spot> trackTop = [];
+List<Spot> trackRight = [];
+List<Spot> trackBottom = [];
 
 Paint commonStroke = new Paint()
   ..color = Colors.black26

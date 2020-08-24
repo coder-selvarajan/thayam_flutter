@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../common.dart';
 import '../constants.dart';
 import 'pawn.dart';
 import 'dart:ui' as ui;
@@ -7,11 +8,6 @@ import 'dart:ui' as ui;
 class Pawns extends StatefulWidget {
 //  Pawns({Key key, this.leftPawn, this.topPawn, this.rightPawn, this.bottomPawn})
 //      : super(key: key);
-//
-//  ui.Image leftPawn;
-//  ui.Image topPawn;
-//  ui.Image rightPawn;
-//  ui.Image bottomPawn;
 
   @override
   _PawnsState createState() => _PawnsState();
@@ -28,37 +24,70 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
   Offset pos3;
   Animation pawnAnimation;
   AnimationController pawnController;
+  Tween pawnTween;
 
-  pawnTap() {
-    if (pawnController.status == AnimationStatus.completed) {
-      pawnController.reverse();
-    } else if (pawnController.status == AnimationStatus.dismissed) {
-      pawnController.forward();
-    }
-  }
-
+  int trackIndex = 0;
+  List<Spot> Spots = [];
   @override
   void initState() {
     super.initState();
+    trackIndex = 0;
 
-    pos1 = Offset((leftSquarePos * bSquareWidth) - leftAdjustment,
-        (topSquarePos * bSquareWidth) - topAdjustment);
-    pos2 = Offset((leftSquarePos * bSquareWidth) - leftAdjustment,
-        (6 * bSquareWidth) - topAdjustment);
-    pos3 = Offset((6 * bSquareWidth) - leftAdjustment,
-        (6 * bSquareWidth) - topAdjustment);
+    Spots = trackBottom;
+
+//    pos = [
+//      Offset((2 * bSquareWidth) - leftAdjustment,
+//          (2 * bSquareWidth) - topAdjustment),
+//      Offset((2 * bSquareWidth) - leftAdjustment,
+//          (3 * bSquareWidth) - topAdjustment),
+//      Offset((2 * bSquareWidth) - leftAdjustment,
+//          (4 * bSquareWidth) - topAdjustment),
+//      Offset((2 * bSquareWidth) - leftAdjustment,
+//          (5 * bSquareWidth) - topAdjustment),
+//      Offset((3 * bSquareWidth) - leftAdjustment,
+//          (5 * bSquareWidth) - topAdjustment),
+//      Offset((4 * bSquareWidth) - leftAdjustment,
+//          (5 * bSquareWidth) - topAdjustment),
+//      Offset((5 * bSquareWidth) - leftAdjustment,
+//          (5 * bSquareWidth) - topAdjustment)
+//    ];
 
     pawnController = AnimationController(
       duration: Duration(milliseconds: 300),
       vsync: this,
     );
-    pawnAnimation = Tween(begin: pos1, end: pos2).animate(
-      CurvedAnimation(parent: pawnController, curve: Curves.easeIn),
-    );
 
-    pawnController.forward();
+    pawnTween = Tween(
+        begin: Spots[trackIndex].offset, end: Spots[trackIndex + 1].offset);
+    pawnAnimation = pawnTween.animate(pawnController);
 
-    pawnController.addStatusListener((status) {});
+    pawnController.addStatusListener((status) {
+      if (status == AnimationStatus.completed ||
+          status == AnimationStatus.dismissed) {
+        trackIndex++;
+        pawnTap();
+      }
+    });
+  }
+
+  pawnTap() {
+    print("pawnPos: $trackIndex");
+    print("pawnController Status: ${pawnController.status}");
+    if (trackIndex >= Spots.length) {
+      return;
+    }
+
+    if (pawnController.status == AnimationStatus.dismissed) {
+      pawnTween.begin = Spots[trackIndex];
+//      pawnController.reset();
+      pawnTween.end = Spots[trackIndex + 1];
+      pawnController.forward();
+    } else if (pawnController.status == AnimationStatus.completed) {
+      pawnTween.begin = Spots[trackIndex + 1];
+//      pawnController.reset();
+      pawnTween.end = Spots[trackIndex];
+      pawnController.reverse();
+    }
   }
 
   @override

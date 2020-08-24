@@ -1,3 +1,4 @@
+import 'package:ThayamGame/common.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart' show rootBundle;
@@ -7,6 +8,7 @@ import '../widgets/board.dart';
 import '../widgets/pawnsPainter.dart';
 import '../widgets/pawn.dart';
 import '../widgets/pawns.dart';
+import '../common.dart';
 
 class Game extends StatefulWidget {
   @override
@@ -24,28 +26,37 @@ class _GameState extends State<Game> {
     bLeftOffset = 8;
     bTopOffset = 10;
     print('initBoardSizes');
+
+    initTracks();
+  }
+
+  void initTracks() {
+    trackLeft = Common().getBottomTrack(bSquareWidth);
+    trackTop = Common().getBottomTrack(bSquareWidth);
+    trackRight = Common().getBottomTrack(bSquareWidth);
+    trackBottom = Common().getBottomTrack(bSquareWidth);
   }
 
   Size getBoardSize(BuildContext context) {
     return Size(300, 300);
   }
 
-  Future<ui.Image> loadImage(String imageName) async {
-    final data = await rootBundle.load(imageName);
-    return decodeImageFromList(data.buffer.asUint8List());
-  }
-
-  loadPawnImage() async {
-    leftPawn = await loadImage("assets/images/maroon-pawn.png");
-    topPawn = await loadImage("assets/images/dark-pawn.png");
-    rightPawn = await loadImage("assets/images/orange-pawn.png");
-    bottomPawn = await loadImage("assets/images/yellow-pawn.png");
-  }
-
-  ui.Image leftPawn;
-  ui.Image topPawn;
-  ui.Image rightPawn;
-  ui.Image bottomPawn;
+//  Future<ui.Image> loadImage(String imageName) async {
+//    final data = await rootBundle.load(imageName);
+//    return decodeImageFromList(data.buffer.asUint8List());
+//  }
+//
+//  loadPawnImage() async {
+//    leftPawn = await loadImage("assets/images/maroon-pawn.png");
+//    topPawn = await loadImage("assets/images/dark-pawn.png");
+//    rightPawn = await loadImage("assets/images/orange-pawn.png");
+//    bottomPawn = await loadImage("assets/images/yellow-pawn.png");
+//  }
+//
+//  ui.Image leftPawn;
+//  ui.Image topPawn;
+//  ui.Image rightPawn;
+//  ui.Image bottomPawn;
 
   initBoardSizes() {}
 
@@ -53,7 +64,7 @@ class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     initBoardSizes();
-    loadPawnImage();
+//    loadPawnImage();
 
     print('Game build called');
 
