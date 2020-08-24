@@ -22,9 +22,9 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
   Offset pos1;
   Offset pos2;
   Offset pos3;
-  Animation pawnAnimation;
+  Animation<Offset> pawnAnimation;
   AnimationController pawnController;
-  Tween pawnTween;
+  Tween<Offset> pawnTween;
 
   int trackIndex = 0;
   List<Spot> Spots = [];
@@ -57,7 +57,7 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
       vsync: this,
     );
 
-    pawnTween = Tween(
+    pawnTween = Tween<Offset>(
         begin: Spots[trackIndex].offset, end: Spots[trackIndex + 1].offset);
     pawnAnimation = pawnTween.animate(pawnController);
 
@@ -78,14 +78,14 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
     }
 
     if (pawnController.status == AnimationStatus.dismissed) {
-      pawnTween.begin = Spots[trackIndex];
+      pawnTween.begin = Spots[trackIndex].offset;
 //      pawnController.reset();
-      pawnTween.end = Spots[trackIndex + 1];
+      pawnTween.end = Spots[trackIndex + 1].offset;
       pawnController.forward();
     } else if (pawnController.status == AnimationStatus.completed) {
-      pawnTween.begin = Spots[trackIndex + 1];
+      pawnTween.begin = Spots[trackIndex + 1].offset;
 //      pawnController.reset();
-      pawnTween.end = Spots[trackIndex];
+      pawnTween.end = Spots[trackIndex].offset;
       pawnController.reverse();
     }
   }

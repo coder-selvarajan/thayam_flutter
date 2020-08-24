@@ -81,7 +81,7 @@ class _GameState extends State<Game> {
         width: double.infinity,
         height: double.infinity,
         child: Stack(
-//          overflow: Overflow.visible,
+          overflow: Overflow.visible,
           children: <Widget>[
             Positioned(
               left: 0,
@@ -91,9 +91,10 @@ class _GameState extends State<Game> {
                 painter: Board(),
               ),
             ),
+//            Pawns(),
             Positioned(
-              left: 0,
-              top: (MediaQuery.of(context).size.height - 400) / 2,
+              left: 10,
+              top: 250, //(MediaQuery.of(context).size.height - 400) / 2,
               child: Pawns(),
             ),
           ],
