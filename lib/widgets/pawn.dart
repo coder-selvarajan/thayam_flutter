@@ -17,8 +17,8 @@ class Pawn extends CustomPainter {
     bCanvas = canvas;
 
     double pawnWidth = bSquareWidth * 1.4;
-    double leftAdjustment = -bLeftOffset + bSquareWidth * 0.7;
-    double topAdjustment = -bTopOffset + bSquareWidth * 0.9;
+    double leftAdjustment = -boardOffsetLeft + bSquareWidth * 0.7;
+    double topAdjustment = -boardOffsetTop + bSquareWidth * 0.9;
 
     paintImage(
         pawnImage,

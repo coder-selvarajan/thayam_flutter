@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../common.dart';
@@ -11,14 +13,10 @@ class Pawns extends StatefulWidget {
 }
 
 class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
-  double pawnWidth = bSquareWidth * 1.4;
-  double leftAdjustment = -bLeftOffset + bSquareWidth * 0.7;
-  double topAdjustment = -bTopOffset + bSquareWidth * 0.9;
+  double leftAdjustment = -boardOffsetLeft + bSquareWidth * 0.7;
+  double topAdjustment = -boardOffsetTop + bSquareWidth * 0.9;
   double leftSquarePos = 2.25;
   double topSquarePos = 3.75;
-  Offset pos1;
-  Offset pos2;
-  Offset pos3;
   Animation<Offset> pawnAnimation;
   AnimationController pawnController;
   Tween<Offset> pawnTween;
@@ -32,7 +30,7 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
     Spots = trackBottom;
 
     pawnController = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 500),
       vsync: this,
     );
 
@@ -41,13 +39,14 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
     pawnAnimation = pawnTween.animate(
       CurvedAnimation(
         parent: pawnController,
-        curve: Curves.decelerate,
+        curve: Curves.linear,
       ),
     );
 
     pawnController.addStatusListener((status) {
       if (status == AnimationStatus.completed ||
           status == AnimationStatus.dismissed) {
+        sleep(Duration(milliseconds: 200));
         trackIndex++;
         pawnTap();
       }
@@ -56,17 +55,21 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    super.dispose();
-
     pawnController.dispose();
+    super.dispose();
   }
 
   pawnTap() {
     print("pawnPos: $trackIndex");
     print("pawnController Status: ${pawnController.status}");
-    if (trackIndex >= Spots.length) {
+    if (trackIndex >= Spots.length - 1) {
       return;
     }
+
+//    pawnController.reset();
+//    pawnTween.begin = Spots[trackIndex].offset;
+//    pawnTween.end = Spots[trackIndex + 1].offset;
+//    pawnController.forward();
 
     if (pawnController.status == AnimationStatus.dismissed) {
       pawnTween.begin = Spots[trackIndex].offset;
@@ -87,8 +90,8 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
       animation: pawnAnimation,
       builder: (context, child) {
         return Positioned(
-          left: bLeftOffset + pawnAnimation.value.dx,
-          top: bTopOffset + pawnAnimation.value.dy,
+          left: pawnAnimation.value.dx,
+          top: pawnAnimation.value.dy,
           width: pawnWidth,
           height: pawnWidth,
           child: child,

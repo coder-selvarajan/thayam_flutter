@@ -21,54 +21,118 @@ class Board extends CustomPainter {
   drawPawnStage() {
     //big circles on all four sides
 
-    drawCircle(leftPaint, commonStroke, bLeftOffset + (3 * bSquareWidth),
-        bTopOffset + (3 * bSquareWidth), bSquareWidth * 2);
-    drawCircle(topPaint, commonStroke, bLeftOffset + (12 * bSquareWidth),
-        bTopOffset + (3 * bSquareWidth), bSquareWidth * 2);
-    drawCircle(rightPaint, commonStroke, bLeftOffset + (12 * bSquareWidth),
-        bTopOffset + (12 * bSquareWidth), bSquareWidth * 2);
-    drawCircle(bottomPaint, commonStroke, bLeftOffset + (3 * bSquareWidth),
-        bTopOffset + (12 * bSquareWidth), bSquareWidth * 2);
+    drawCircle(leftPaint, commonStroke, boardOffsetLeft + (3 * bSquareWidth),
+        boardOffsetTop + (3 * bSquareWidth), bSquareWidth * 2);
+    drawCircle(topPaint, commonStroke, boardOffsetLeft + (12 * bSquareWidth),
+        boardOffsetTop + (3 * bSquareWidth), bSquareWidth * 2);
+    drawCircle(rightPaint, commonStroke, boardOffsetLeft + (12 * bSquareWidth),
+        boardOffsetTop + (12 * bSquareWidth), bSquareWidth * 2);
+    drawCircle(bottomPaint, commonStroke, boardOffsetLeft + (3 * bSquareWidth),
+        boardOffsetTop + (12 * bSquareWidth), bSquareWidth * 2);
 
     //Left - inner circles
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (2.25 * bSquareWidth),
-        bTopOffset + (2.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (3.75 * bSquareWidth),
-        bTopOffset + (2.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (2.25 * bSquareWidth),
-        bTopOffset + (3.75 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (3.75 * bSquareWidth),
-        bTopOffset + (3.75 * bSquareWidth), bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (2.25 * bSquareWidth),
+        boardOffsetTop + (2.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (3.75 * bSquareWidth),
+        boardOffsetTop + (2.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (2.25 * bSquareWidth),
+        boardOffsetTop + (3.75 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (3.75 * bSquareWidth),
+        boardOffsetTop + (3.75 * bSquareWidth),
+        bSquareWidth * 0.6);
 
     //Top - inner circles
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (11.25 * bSquareWidth),
-        bTopOffset + (2.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (12.75 * bSquareWidth),
-        bTopOffset + (2.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (11.25 * bSquareWidth),
-        bTopOffset + (3.75 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (12.75 * bSquareWidth),
-        bTopOffset + (3.75 * bSquareWidth), bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (11.25 * bSquareWidth),
+        boardOffsetTop + (2.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (12.75 * bSquareWidth),
+        boardOffsetTop + (2.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (11.25 * bSquareWidth),
+        boardOffsetTop + (3.75 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (12.75 * bSquareWidth),
+        boardOffsetTop + (3.75 * bSquareWidth),
+        bSquareWidth * 0.6);
 
     //Right - inner circles
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (11.25 * bSquareWidth),
-        bTopOffset + (11.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (12.75 * bSquareWidth),
-        bTopOffset + (11.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (11.25 * bSquareWidth),
-        bTopOffset + (12.75 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (12.75 * bSquareWidth),
-        bTopOffset + (12.75 * bSquareWidth), bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (11.25 * bSquareWidth),
+        boardOffsetTop + (11.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (12.75 * bSquareWidth),
+        boardOffsetTop + (11.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (11.25 * bSquareWidth),
+        boardOffsetTop + (12.75 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (12.75 * bSquareWidth),
+        boardOffsetTop + (12.75 * bSquareWidth),
+        bSquareWidth * 0.6);
 
     //Bottom - inner circles
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (2.25 * bSquareWidth),
-        bTopOffset + (11.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (3.75 * bSquareWidth),
-        bTopOffset + (11.25 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (2.25 * bSquareWidth),
-        bTopOffset + (12.75 * bSquareWidth), bSquareWidth * 0.6);
-    drawCircle(commonPaint2, commonStroke, bLeftOffset + (3.75 * bSquareWidth),
-        bTopOffset + (12.75 * bSquareWidth), bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (2.25 * bSquareWidth),
+        boardOffsetTop + (11.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (3.75 * bSquareWidth),
+        boardOffsetTop + (11.25 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (2.25 * bSquareWidth),
+        boardOffsetTop + (12.75 * bSquareWidth),
+        bSquareWidth * 0.6);
+    drawCircle(
+        commonPaint2,
+        commonStroke,
+        boardOffsetLeft + (3.75 * bSquareWidth),
+        boardOffsetTop + (12.75 * bSquareWidth),
+        bSquareWidth * 0.6);
 
 //    drawSquare(lightPaint, commonStroke2, leftOffset + squareWidth,
 //        topOffset + squareWidth, squareWidth * 2);
@@ -77,7 +141,7 @@ class Board extends CustomPainter {
   }
 
   drawBoard() {
-    var rect = Rect.fromLTWH(bLeftOffset, bTopOffset, bWidth, bWidth);
+    var rect = Rect.fromLTWH(boardOffsetLeft, boardOffsetTop, bWidth, bWidth);
     var paint = Paint()..color = Colors.white.withOpacity(0.5);
     bCanvas.drawRect(rect, paint);
   }
@@ -94,32 +158,32 @@ class Board extends CustomPainter {
     // bottom triangle
     drawBottomTriangle(
         bottomPaint,
-        bLeftOffset + (6 * bSquareWidth),
-        bTopOffset + (7 * bSquareWidth) + (bSquareWidth / 2),
+        boardOffsetLeft + (6 * bSquareWidth),
+        boardOffsetTop + (7 * bSquareWidth) + (bSquareWidth / 2),
         (bSquareWidth * 3),
         (bSquareWidth * 1.5));
 
     // left triangle
     drawLeftTriangle(
         leftPaint,
-        bLeftOffset + (6 * bSquareWidth),
-        bTopOffset + (6 * bSquareWidth),
+        boardOffsetLeft + (6 * bSquareWidth),
+        boardOffsetTop + (6 * bSquareWidth),
         (bSquareWidth * 1.5),
         (bSquareWidth * 3));
 
     // Top triangle
     drawTopTriangle(
         topPaint,
-        bLeftOffset + (6 * bSquareWidth),
-        bTopOffset + (6 * bSquareWidth),
+        boardOffsetLeft + (6 * bSquareWidth),
+        boardOffsetTop + (6 * bSquareWidth),
         (bSquareWidth * 3),
         (bSquareWidth * 1.5));
 
     // Right triangle
     drawRightTriangle(
         rightPaint,
-        bLeftOffset + (7 * bSquareWidth) + (bSquareWidth / 2),
-        bTopOffset + (6 * bSquareWidth),
+        boardOffsetLeft + (7 * bSquareWidth) + (bSquareWidth / 2),
+        boardOffsetTop + (6 * bSquareWidth),
         (bSquareWidth * 1.5),
         (bSquareWidth * 3));
 
@@ -128,8 +192,8 @@ class Board extends CustomPainter {
         lightPaint,
         commonStroke,
         commonStroke2,
-        bLeftOffset + (6 * bSquareWidth),
-        bTopOffset + (6 * bSquareWidth),
+        boardOffsetLeft + (6 * bSquareWidth),
+        boardOffsetTop + (6 * bSquareWidth),
         bSquareWidth * 3);
   }
 
@@ -180,8 +244,8 @@ class Board extends CustomPainter {
         commonPaint,
         commonStroke2,
         commonStroke2,
-        bLeftOffset + (5 * bSquareWidth),
-        bTopOffset + (5 * bSquareWidth),
+        boardOffsetLeft + (5 * bSquareWidth),
+        boardOffsetTop + (5 * bSquareWidth),
         bSquareWidth);
 
     //Left-Bottom
@@ -189,8 +253,8 @@ class Board extends CustomPainter {
         commonPaint,
         commonStroke2,
         commonStroke2,
-        bLeftOffset + (5 * bSquareWidth),
-        bTopOffset + (9 * bSquareWidth),
+        boardOffsetLeft + (5 * bSquareWidth),
+        boardOffsetTop + (9 * bSquareWidth),
         bSquareWidth);
 
     //Right-Top
@@ -198,8 +262,8 @@ class Board extends CustomPainter {
         commonPaint,
         commonStroke2,
         commonStroke2,
-        bLeftOffset + (9 * bSquareWidth),
-        bTopOffset + (5 * bSquareWidth),
+        boardOffsetLeft + (9 * bSquareWidth),
+        boardOffsetTop + (5 * bSquareWidth),
         bSquareWidth);
 
     //Right-Bottom
@@ -207,8 +271,8 @@ class Board extends CustomPainter {
         commonPaint,
         commonStroke2,
         commonStroke2,
-        bLeftOffset + (9 * bSquareWidth),
-        bTopOffset + (9 * bSquareWidth),
+        boardOffsetLeft + (9 * bSquareWidth),
+        boardOffsetTop + (9 * bSquareWidth),
         bSquareWidth);
   }
 
@@ -216,88 +280,132 @@ class Board extends CustomPainter {
     //Left squares
     for (var i = 0; i <= 5; i++) {
       // fill
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (i * bSquareWidth),
-          bTopOffset + (6 * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (i * bSquareWidth),
+          boardOffsetTop + (6 * bSquareWidth),
+          bSquareWidth);
       if (i == 0 || i == 5) {
         drawSquareWithCross(
             leftPaint,
             commonStroke2,
             commonStroke2,
-            bLeftOffset + (i * bSquareWidth),
-            bTopOffset + (7 * bSquareWidth),
+            boardOffsetLeft + (i * bSquareWidth),
+            boardOffsetTop + (7 * bSquareWidth),
             bSquareWidth);
       } else {
-        drawSquare(leftPaint, commonStroke, bLeftOffset + (i * bSquareWidth),
-            bTopOffset + (7 * bSquareWidth), bSquareWidth);
+        drawSquare(
+            leftPaint,
+            commonStroke,
+            boardOffsetLeft + (i * bSquareWidth),
+            boardOffsetTop + (7 * bSquareWidth),
+            bSquareWidth);
       }
 
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (i * bSquareWidth),
-          bTopOffset + (8 * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (i * bSquareWidth),
+          boardOffsetTop + (8 * bSquareWidth),
+          bSquareWidth);
     }
 
     //Top squares
     for (var i = 0; i <= 5; i++) {
       // fill
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (6 * bSquareWidth),
-          bTopOffset + (i * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (6 * bSquareWidth),
+          boardOffsetTop + (i * bSquareWidth),
+          bSquareWidth);
       if (i == 0 || i == 5) {
         drawSquareWithCross(
             topPaint,
             commonStroke,
             commonStroke2,
-            bLeftOffset + (7 * bSquareWidth),
-            bTopOffset + (i * bSquareWidth),
+            boardOffsetLeft + (7 * bSquareWidth),
+            boardOffsetTop + (i * bSquareWidth),
             bSquareWidth);
       } else {
-        drawSquare(topPaint, commonStroke, bLeftOffset + (7 * bSquareWidth),
-            bTopOffset + (i * bSquareWidth), bSquareWidth);
+        drawSquare(topPaint, commonStroke, boardOffsetLeft + (7 * bSquareWidth),
+            boardOffsetTop + (i * bSquareWidth), bSquareWidth);
       }
 
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (8 * bSquareWidth),
-          bTopOffset + (i * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (8 * bSquareWidth),
+          boardOffsetTop + (i * bSquareWidth),
+          bSquareWidth);
     }
 
     //Right squares
     for (var i = 9; i <= 14; i++) {
       // fill
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (i * bSquareWidth),
-          bTopOffset + (6 * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (i * bSquareWidth),
+          boardOffsetTop + (6 * bSquareWidth),
+          bSquareWidth);
       if (i == 9 || i == 14) {
         drawSquareWithCross(
             rightPaint,
             commonStroke,
             commonStroke2,
-            bLeftOffset + (i * bSquareWidth),
-            bTopOffset + (7 * bSquareWidth),
+            boardOffsetLeft + (i * bSquareWidth),
+            boardOffsetTop + (7 * bSquareWidth),
             bSquareWidth);
       } else {
-        drawSquare(rightPaint, commonStroke, bLeftOffset + (i * bSquareWidth),
-            bTopOffset + (7 * bSquareWidth), bSquareWidth);
+        drawSquare(
+            rightPaint,
+            commonStroke,
+            boardOffsetLeft + (i * bSquareWidth),
+            boardOffsetTop + (7 * bSquareWidth),
+            bSquareWidth);
       }
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (i * bSquareWidth),
-          bTopOffset + (8 * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (i * bSquareWidth),
+          boardOffsetTop + (8 * bSquareWidth),
+          bSquareWidth);
     }
 
     //Bottom squares
     for (var i = 9; i <= 14; i++) {
       // fill
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (6 * bSquareWidth),
-          bTopOffset + (i * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (6 * bSquareWidth),
+          boardOffsetTop + (i * bSquareWidth),
+          bSquareWidth);
       if (i == 9 || i == 14) {
         drawSquareWithCross(
             bottomPaint,
             commonStroke,
             commonStroke2,
-            bLeftOffset + (7 * bSquareWidth),
-            bTopOffset + (i * bSquareWidth),
+            boardOffsetLeft + (7 * bSquareWidth),
+            boardOffsetTop + (i * bSquareWidth),
             bSquareWidth);
       } else {
-        drawSquare(bottomPaint, commonStroke, bLeftOffset + (7 * bSquareWidth),
-            bTopOffset + (i * bSquareWidth), bSquareWidth);
+        drawSquare(
+            bottomPaint,
+            commonStroke,
+            boardOffsetLeft + (7 * bSquareWidth),
+            boardOffsetTop + (i * bSquareWidth),
+            bSquareWidth);
       }
 
-      drawSquare(commonPaint, commonStroke, bLeftOffset + (8 * bSquareWidth),
-          bTopOffset + (i * bSquareWidth), bSquareWidth);
+      drawSquare(
+          commonPaint,
+          commonStroke,
+          boardOffsetLeft + (8 * bSquareWidth),
+          boardOffsetTop + (i * bSquareWidth),
+          bSquareWidth);
     }
   }
 

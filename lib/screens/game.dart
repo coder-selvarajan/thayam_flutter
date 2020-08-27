@@ -21,10 +21,10 @@ class _GameState extends State<Game> {
   }
 
   void initTracks() {
-    trackLeft = Common().getBottomTrack(bSquareWidth);
-    trackTop = Common().getBottomTrack(bSquareWidth);
-    trackRight = Common().getBottomTrack(bSquareWidth);
-    trackBottom = Common().getBottomTrack(bSquareWidth);
+    trackLeft = Common().getBottomTrack();
+    trackTop = Common().getBottomTrack();
+    trackRight = Common().getBottomTrack();
+    trackBottom = Common().getBottomTrack();
   }
 
   Size getBoardSize(BuildContext context) {
@@ -35,9 +35,13 @@ class _GameState extends State<Game> {
     bWidth = screenWidth - 20;
     bHeight = bWidth;
 
-    bLeftOffset = 10;
-    bTopOffset = (screenHeight - bWidth) / 2;
+    boardOffsetLeft = 10;
+    boardOffsetTop = (screenHeight - bWidth) / 2;
     bSquareWidth = bWidth / 15;
+
+    pawnWidth = bSquareWidth * 1.2;
+    pawnOffsetLeft = bSquareWidth * 0.1;
+    pawnOffsetTop = bSquareWidth * 0.3;
 
     initTracks();
   }

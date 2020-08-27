@@ -5,9 +5,12 @@ bool testPaint = false;
 double bWidth = 0;
 double bHeight = 0;
 double bSquareWidth = 0;
+double pawnWidth = 0;
+double pawnOffsetLeft = 0.0;
+double pawnOffsetTop = 0.0;
 
-double bLeftOffset = 0;
-double bTopOffset = 0;
+double boardOffsetLeft = 0;
+double boardOffsetTop = 0;
 
 List<Spot> trackLeft = [];
 List<Spot> trackTop = [];

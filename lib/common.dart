@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
 class Spot {
   Offset offset = Offset(0, 0);
@@ -24,120 +25,150 @@ class Spot {
 }
 
 class Common {
-  List<Spot> getBottomTrack(double boxWidth) {
+  List<Spot> getBottomTrack() {
+    double leftOffset = boardOffsetLeft - pawnOffsetLeft;
+    double topOffset = boardOffsetTop - pawnOffsetTop;
     List<Spot> leftMountain = [
-      Spot(5 * boxWidth, 6 * boxWidth),
-      Spot(4 * boxWidth, 6 * boxWidth),
-      Spot(3 * boxWidth, 6 * boxWidth),
-      Spot(2 * boxWidth, 6 * boxWidth),
-      Spot(1 * boxWidth, 6 * boxWidth),
-      Spot(0 * boxWidth, 6 * boxWidth),
+      // starting from mountain top
+      Spot((5 * bSquareWidth) + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot((4 * bSquareWidth) + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot((3 * bSquareWidth) + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot((2 * bSquareWidth) + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot((1 * bSquareWidth) + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot((0 * bSquareWidth) + leftOffset, 6 * bSquareWidth + topOffset),
       //turn
-      Spot.withType(0 * boxWidth, 7 * boxWidth, 'cross'),
+      Spot.withType((0 * bSquareWidth) + leftOffset,
+          7 * bSquareWidth + topOffset, 'cross'),
       // left bottom corner
-      Spot(0 * boxWidth, 8 * boxWidth),
-      Spot(1 * boxWidth, 8 * boxWidth),
-      Spot(2 * boxWidth, 8 * boxWidth),
-      Spot(3 * boxWidth, 8 * boxWidth),
-      Spot(4 * boxWidth, 8 * boxWidth),
-      Spot(5 * boxWidth, 8 * boxWidth),
+      Spot((0 * bSquareWidth) + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot((1 * bSquareWidth) + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot((2 * bSquareWidth) + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot((3 * bSquareWidth) + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot((4 * bSquareWidth) + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot((5 * bSquareWidth) + leftOffset, 8 * bSquareWidth + topOffset),
       // left bottom cross turn
-      Spot.withType(5 * boxWidth, 9 * boxWidth, 'cross'),
+      Spot.withType((5 * bSquareWidth) + leftOffset,
+          9 * bSquareWidth + topOffset, 'cross'),
     ];
 
     List<Spot> topMountain = [
-      Spot(8 * boxWidth, 5 * boxWidth),
-      Spot(8 * boxWidth, 4 * boxWidth),
-      Spot(8 * boxWidth, 3 * boxWidth),
-      Spot(8 * boxWidth, 2 * boxWidth),
-      Spot(8 * boxWidth, 1 * boxWidth),
-      Spot(8 * boxWidth, 0 * boxWidth),
+      Spot(8 * bSquareWidth + leftOffset, 5 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 4 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 3 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 2 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 1 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 0 * bSquareWidth + topOffset),
       // turn
-      Spot.withType(7 * boxWidth, 0 * boxWidth, 'cross'),
+      Spot.withType(
+          7 * bSquareWidth + leftOffset, 0 * bSquareWidth + topOffset, 'cross'),
       // top left corner
-      Spot(6 * boxWidth, 0 * boxWidth),
-      Spot(6 * boxWidth, 1 * boxWidth),
-      Spot(6 * boxWidth, 2 * boxWidth),
-      Spot(6 * boxWidth, 3 * boxWidth),
-      Spot(6 * boxWidth, 4 * boxWidth),
-      Spot(6 * boxWidth, 5 * boxWidth),
+      Spot(6 * bSquareWidth + leftOffset, 0 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 1 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 2 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 3 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 4 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 5 * bSquareWidth + topOffset),
       // top left cross
-      Spot.withType(5 * boxWidth, 5 * boxWidth, 'cross'),
+      Spot.withType(
+          5 * bSquareWidth + leftOffset, 5 * bSquareWidth + topOffset, 'cross'),
     ];
 
     List<Spot> rightMountain = [
-      Spot(9 * boxWidth, 8 * boxWidth),
-      Spot(10 * boxWidth, 8 * boxWidth),
-      Spot(11 * boxWidth, 8 * boxWidth),
-      Spot(12 * boxWidth, 8 * boxWidth),
-      Spot(13 * boxWidth, 8 * boxWidth),
-      Spot(14 * boxWidth, 8 * boxWidth),
+      Spot(9 * bSquareWidth + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot(10 * bSquareWidth + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot(11 * bSquareWidth + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot(12 * bSquareWidth + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot(13 * bSquareWidth + leftOffset, 8 * bSquareWidth + topOffset),
+      Spot(14 * bSquareWidth + leftOffset, 8 * bSquareWidth + topOffset),
       //turn
-      Spot.withType(14 * boxWidth, 7 * boxWidth, 'cross'),
+      Spot.withType(14 * bSquareWidth + leftOffset,
+          7 * bSquareWidth + topOffset, 'cross'),
       // right top corner
-      Spot(14 * boxWidth, 6 * boxWidth),
-      Spot(13 * boxWidth, 6 * boxWidth),
-      Spot(12 * boxWidth, 6 * boxWidth),
-      Spot(11 * boxWidth, 6 * boxWidth),
-      Spot(10 * boxWidth, 6 * boxWidth),
-      Spot(9 * boxWidth, 6 * boxWidth),
+      Spot(14 * bSquareWidth + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot(13 * bSquareWidth + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot(12 * bSquareWidth + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot(11 * bSquareWidth + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot(10 * bSquareWidth + leftOffset, 6 * bSquareWidth + topOffset),
+      Spot(9 * bSquareWidth + leftOffset, 6 * bSquareWidth + topOffset),
       // top right cross turn
-      Spot.withType(9 * boxWidth, 5 * boxWidth, 'cross'),
+      Spot.withType(
+          9 * bSquareWidth + leftOffset, 5 * bSquareWidth + topOffset, 'cross'),
     ];
 
     List<Spot> bottomMountain = [
-      Spot(6 * boxWidth, 9 * boxWidth),
-      Spot(6 * boxWidth, 10 * boxWidth),
-      Spot(6 * boxWidth, 11 * boxWidth),
-      Spot(6 * boxWidth, 12 * boxWidth),
-      Spot(6 * boxWidth, 13 * boxWidth),
-      Spot(6 * boxWidth, 14 * boxWidth),
+      Spot(6 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 10 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 11 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 12 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 13 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 14 * bSquareWidth + topOffset),
       // turn
-      Spot.withType(7 * boxWidth, 14 * boxWidth, 'cross'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          14 * bSquareWidth + topOffset, 'cross'),
       // bottom right corner
-      Spot(8 * boxWidth, 14 * boxWidth),
-      Spot(8 * boxWidth, 13 * boxWidth),
-      Spot(8 * boxWidth, 12 * boxWidth),
-      Spot(8 * boxWidth, 11 * boxWidth),
-      Spot(8 * boxWidth, 10 * boxWidth),
-      Spot(8 * boxWidth, 9 * boxWidth),
+      Spot(8 * bSquareWidth + leftOffset, 14 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 13 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 12 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 11 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 10 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset),
       // bottom right cross
-      Spot.withType(9 * boxWidth, 9 * boxWidth, 'cross'),
+      Spot.withType(
+          9 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset, 'cross'),
     ];
 
     List<Spot> bottomStart = [
-      Spot.withType(7 * boxWidth, 9 * boxWidth, 'first5'),
-      Spot.withType(7 * boxWidth, 10 * boxWidth, 'first5'),
-      Spot.withType(7 * boxWidth, 11 * boxWidth, 'first5'),
-      Spot.withType(7 * boxWidth, 12 * boxWidth, 'first5'),
-      Spot.withType(7 * boxWidth, 13 * boxWidth, 'first5'),
-      Spot.withType(7 * boxWidth, 14 * boxWidth, 'cross'),
+      //Position is stage
+      Spot.withType((2 * bSquareWidth) + leftOffset,
+          11 * bSquareWidth + topOffset, 'stage'),
+
+      // starting from mountain top
+      Spot.withType(7 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset,
+          'first5'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          10 * bSquareWidth + topOffset, 'first5'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          11 * bSquareWidth + topOffset, 'first5'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          12 * bSquareWidth + topOffset, 'first5'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          13 * bSquareWidth + topOffset, 'first5'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          14 * bSquareWidth + topOffset, 'cross'),
       // u-turn
-      Spot(8 * boxWidth, 14 * boxWidth),
-      Spot(8 * boxWidth, 13 * boxWidth),
-      Spot(8 * boxWidth, 12 * boxWidth),
-      Spot(8 * boxWidth, 11 * boxWidth),
-      Spot(8 * boxWidth, 10 * boxWidth),
-      Spot(8 * boxWidth, 9 * boxWidth),
+      Spot(8 * bSquareWidth + leftOffset, 14 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 13 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 12 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 11 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 10 * bSquareWidth + topOffset),
+      Spot(8 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset),
       // bottom right cross turn
-      Spot.withType(9 * boxWidth, 9 * boxWidth, 'cross'),
+      Spot.withType(
+          9 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset, 'cross'),
     ];
     List<Spot> bottonEnd = [
-      Spot(6 * boxWidth, 9 * boxWidth),
-      Spot(6 * boxWidth, 10 * boxWidth),
-      Spot(6 * boxWidth, 11 * boxWidth),
-      Spot(6 * boxWidth, 12 * boxWidth),
-      Spot(6 * boxWidth, 13 * boxWidth),
-      Spot(6 * boxWidth, 14 * boxWidth),
+      Spot(6 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 10 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 11 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 12 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 13 * bSquareWidth + topOffset),
+      Spot(6 * bSquareWidth + leftOffset, 14 * bSquareWidth + topOffset),
       // u-turn
-      Spot.withType(7 * boxWidth, 14 * boxWidth, 'last6'),
-      Spot.withType(7 * boxWidth, 13 * boxWidth, 'last6'),
-      Spot.withType(7 * boxWidth, 12 * boxWidth, 'last6'),
-      Spot.withType(7 * boxWidth, 11 * boxWidth, 'last6'),
-      Spot.withType(7 * boxWidth, 10 * boxWidth, 'last6'),
-      Spot.withType(7 * boxWidth, 9 * boxWidth, 'last6'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          14 * bSquareWidth + topOffset, 'last6'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          13 * bSquareWidth + topOffset, 'last6'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          12 * bSquareWidth + topOffset, 'last6'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          11 * bSquareWidth + topOffset, 'last6'),
+      Spot.withType(7 * bSquareWidth + leftOffset,
+          10 * bSquareWidth + topOffset, 'last6'),
+      Spot.withType(
+          7 * bSquareWidth + leftOffset, 9 * bSquareWidth + topOffset, 'last6'),
       // bottom fruit
-      Spot.withType(7 * boxWidth, 8 * boxWidth, 'fruit'),
+      Spot.withType(
+          7 * bSquareWidth + leftOffset, 8 * bSquareWidth + topOffset, 'fruit'),
     ];
 
     return [
