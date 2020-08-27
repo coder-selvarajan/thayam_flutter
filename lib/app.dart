@@ -7,6 +7,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Thayam',
+      theme: ThemeData.dark(),
       home: Game(),
     );
   }

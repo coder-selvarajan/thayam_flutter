@@ -6,9 +6,6 @@ import 'pawn.dart';
 import 'dart:ui' as ui;
 
 class Pawns extends StatefulWidget {
-//  Pawns({Key key, this.leftPawn, this.topPawn, this.rightPawn, this.bottomPawn})
-//      : super(key: key);
-
   @override
   _PawnsState createState() => _PawnsState();
 }
@@ -32,34 +29,21 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     trackIndex = 0;
-
     Spots = trackBottom;
 
-//    pos = [
-//      Offset((2 * bSquareWidth) - leftAdjustment,
-//          (2 * bSquareWidth) - topAdjustment),
-//      Offset((2 * bSquareWidth) - leftAdjustment,
-//          (3 * bSquareWidth) - topAdjustment),
-//      Offset((2 * bSquareWidth) - leftAdjustment,
-//          (4 * bSquareWidth) - topAdjustment),
-//      Offset((2 * bSquareWidth) - leftAdjustment,
-//          (5 * bSquareWidth) - topAdjustment),
-//      Offset((3 * bSquareWidth) - leftAdjustment,
-//          (5 * bSquareWidth) - topAdjustment),
-//      Offset((4 * bSquareWidth) - leftAdjustment,
-//          (5 * bSquareWidth) - topAdjustment),
-//      Offset((5 * bSquareWidth) - leftAdjustment,
-//          (5 * bSquareWidth) - topAdjustment)
-//    ];
-
     pawnController = AnimationController(
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 200),
       vsync: this,
     );
 
     pawnTween = Tween<Offset>(
         begin: Spots[trackIndex].offset, end: Spots[trackIndex + 1].offset);
-    pawnAnimation = pawnTween.animate(pawnController);
+    pawnAnimation = pawnTween.animate(
+      CurvedAnimation(
+        parent: pawnController,
+        curve: Curves.decelerate,
+      ),
+    );
 
     pawnController.addStatusListener((status) {
       if (status == AnimationStatus.completed ||
@@ -68,6 +52,13 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
         pawnTap();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    pawnController.dispose();
   }
 
   pawnTap() {
@@ -79,12 +70,10 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
 
     if (pawnController.status == AnimationStatus.dismissed) {
       pawnTween.begin = Spots[trackIndex].offset;
-//      pawnController.reset();
       pawnTween.end = Spots[trackIndex + 1].offset;
       pawnController.forward();
     } else if (pawnController.status == AnimationStatus.completed) {
       pawnTween.begin = Spots[trackIndex + 1].offset;
-//      pawnController.reset();
       pawnTween.end = Spots[trackIndex].offset;
       pawnController.reverse();
     }
@@ -98,8 +87,8 @@ class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
       animation: pawnAnimation,
       builder: (context, child) {
         return Positioned(
-          left: pawnAnimation.value.dx,
-          top: pawnAnimation.value.dy,
+          left: bLeftOffset + pawnAnimation.value.dx,
+          top: bTopOffset + pawnAnimation.value.dy,
           width: pawnWidth,
           height: pawnWidth,
           child: child,

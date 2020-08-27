@@ -142,10 +142,10 @@ class Common {
 
     return [
       ...bottomStart,
-      ...rightMountain,
-      ...topMountain,
-      ...leftMountain,
-      ...bottonEnd
+//      ...rightMountain,
+//      ...topMountain,
+//      ...leftMountain,
+//      ...bottonEnd
     ];
   }
 }

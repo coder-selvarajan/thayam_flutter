@@ -5,7 +5,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
 import '../constants.dart';
 import '../widgets/board.dart';
-import '../widgets/pawnsPainter.dart';
 import '../widgets/pawn.dart';
 import '../widgets/pawns.dart';
 import '../common.dart';
@@ -19,15 +18,6 @@ class _GameState extends State<Game> {
   @override
   void initState() {
     super.initState();
-
-    bWidth = 400; //MediaQuery.of(context).size.width - 20;
-    bHeight = bWidth;
-    bSquareWidth = bWidth / 15;
-    bLeftOffset = 8;
-    bTopOffset = 10;
-    print('initBoardSizes');
-
-    initTracks();
   }
 
   void initTracks() {
@@ -38,66 +28,54 @@ class _GameState extends State<Game> {
   }
 
   Size getBoardSize(BuildContext context) {
-    return Size(300, 300);
+    return Size(10, 10);
   }
 
-//  Future<ui.Image> loadImage(String imageName) async {
-//    final data = await rootBundle.load(imageName);
-//    return decodeImageFromList(data.buffer.asUint8List());
-//  }
-//
-//  loadPawnImage() async {
-//    leftPawn = await loadImage("assets/images/maroon-pawn.png");
-//    topPawn = await loadImage("assets/images/dark-pawn.png");
-//    rightPawn = await loadImage("assets/images/orange-pawn.png");
-//    bottomPawn = await loadImage("assets/images/yellow-pawn.png");
-//  }
-//
-//  ui.Image leftPawn;
-//  ui.Image topPawn;
-//  ui.Image rightPawn;
-//  ui.Image bottomPawn;
+  void initBoardSizes(double screenWidth, double screenHeight) {
+    bWidth = screenWidth - 20;
+    bHeight = bWidth;
 
-  initBoardSizes() {}
+    bLeftOffset = 10;
+    bTopOffset = (screenHeight - bWidth) / 2;
+    bSquareWidth = bWidth / 15;
+
+    initTracks();
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    initBoardSizes();
-//    loadPawnImage();
+    initBoardSizes(
+      MediaQuery.of(context).size.width,
+      MediaQuery.of(context).size.height,
+    );
 
     print('Game build called');
 
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "assets/images/wooden-bg.png",
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                "assets/images/wooden-bg.png",
+              ),
+              fit: BoxFit.cover,
             ),
-            fit: BoxFit.cover,
           ),
-        ),
-        width: double.infinity,
-        height: double.infinity,
-        child: Stack(
-          overflow: Overflow.visible,
-          children: <Widget>[
-            Positioned(
-              left: 0,
-              top: (MediaQuery.of(context).size.height - 400) / 2,
-              child: CustomPaint(
-                size: getBoardSize(context),
+          width: double.infinity,
+          height: double.infinity,
+          child: Stack(
+            alignment: Alignment.topLeft,
+//            overflow: Overflow.visible,
+            children: <Widget>[
+              CustomPaint(
+                //size: getBoardSize(context),
                 painter: Board(),
               ),
-            ),
-//            Pawns(),
-            Positioned(
-              left: 10,
-              top: 250, //(MediaQuery.of(context).size.height - 400) / 2,
-              child: Pawns(),
-            ),
-          ],
+              Pawns(),
+            ],
+          ),
         ),
       ),
     );
