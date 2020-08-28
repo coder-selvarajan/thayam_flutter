@@ -1,13 +1,14 @@
-import 'package:ThayamGame/common.dart';
+import 'package:ThayamGame/tracks.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/painting.dart' show decodeImageFromList;
 import '../constants.dart';
 import '../widgets/board.dart';
-import '../widgets/pawn.dart';
+import '../widgets/pawnPainter.dart';
 import '../widgets/pawns.dart';
-import '../common.dart';
+import '../tracks.dart';
+import '../widgets/pawn.dart';
 
 class Game extends StatefulWidget {
   @override
@@ -15,16 +16,20 @@ class Game extends StatefulWidget {
 }
 
 class _GameState extends State<Game> {
+  Tracks tracks = Tracks();
+
   @override
   void initState() {
     super.initState();
   }
 
   void initTracks() {
-    trackLeft = Common().getBottomTrack();
-    trackTop = Common().getBottomTrack();
-    trackRight = Common().getBottomTrack();
-    trackBottom = Common().getBottomTrack();
+    tracks.initializeTracks();
+
+    trackLeft = tracks.getLeftTrack(4);
+    trackTop = tracks.getTopTrack(4);
+    trackRight = tracks.getRightTrack(4);
+    trackBottom = tracks.getBottomTrack(1);
   }
 
   Size getBoardSize(BuildContext context) {
@@ -32,11 +37,16 @@ class _GameState extends State<Game> {
   }
 
   void initBoardSizes(double screenWidth, double screenHeight) {
-    bWidth = screenWidth - 20;
-    bHeight = bWidth;
+    if (screenWidth > screenHeight) {
+      bWidth = screenHeight - (screenHeight * 0.25);
+      bHeight = bWidth;
+    } else {
+      bWidth = screenWidth - 20;
+      bHeight = bWidth;
+    }
 
-    boardOffsetLeft = 10;
-    boardOffsetTop = (screenHeight - bWidth) / 2;
+    boardOffsetLeft = (screenWidth - bWidth) / 2;
+    boardOffsetTop = (screenHeight - bHeight) / 2;
     bSquareWidth = bWidth / 15;
 
     pawnWidth = bSquareWidth * 1.2;

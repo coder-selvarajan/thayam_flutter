@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../common.dart';
-import '../constants.dart';
+import '../tracks.dart';
 import 'pawn.dart';
+import '../constants.dart';
+import 'pawnPainter.dart';
 import 'dart:ui' as ui;
 
 class Pawns extends StatefulWidget {
@@ -13,94 +14,113 @@ class Pawns extends StatefulWidget {
 }
 
 class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
-  double leftAdjustment = -boardOffsetLeft + bSquareWidth * 0.7;
-  double topAdjustment = -boardOffsetTop + bSquareWidth * 0.9;
-  double leftSquarePos = 2.25;
-  double topSquarePos = 3.75;
-  Animation<Offset> pawnAnimation;
-  AnimationController pawnController;
-  Tween<Offset> pawnTween;
+  Tracks tracks = Tracks();
 
-  int trackIndex = 0;
-  List<Spot> Spots = [];
   @override
   void initState() {
     super.initState();
-    trackIndex = 0;
-    Spots = trackBottom;
-
-    pawnController = AnimationController(
-      duration: Duration(milliseconds: 500),
-      vsync: this,
-    );
-
-    pawnTween = Tween<Offset>(
-        begin: Spots[trackIndex].offset, end: Spots[trackIndex + 1].offset);
-    pawnAnimation = pawnTween.animate(
-      CurvedAnimation(
-        parent: pawnController,
-        curve: Curves.linear,
-      ),
-    );
-
-    pawnController.addStatusListener((status) {
-      if (status == AnimationStatus.completed ||
-          status == AnimationStatus.dismissed) {
-        sleep(Duration(milliseconds: 200));
-        trackIndex++;
-        pawnTap();
-      }
-    });
+    tracks.initializeTracks();
   }
 
   @override
   void dispose() {
-    pawnController.dispose();
     super.dispose();
-  }
-
-  pawnTap() {
-    print("pawnPos: $trackIndex");
-    print("pawnController Status: ${pawnController.status}");
-    if (trackIndex >= Spots.length - 1) {
-      return;
-    }
-
-//    pawnController.reset();
-//    pawnTween.begin = Spots[trackIndex].offset;
-//    pawnTween.end = Spots[trackIndex + 1].offset;
-//    pawnController.forward();
-
-    if (pawnController.status == AnimationStatus.dismissed) {
-      pawnTween.begin = Spots[trackIndex].offset;
-      pawnTween.end = Spots[trackIndex + 1].offset;
-      pawnController.forward();
-    } else if (pawnController.status == AnimationStatus.completed) {
-      pawnTween.begin = Spots[trackIndex + 1].offset;
-      pawnTween.end = Spots[trackIndex].offset;
-      pawnController.reverse();
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     print('Pawn build called');
 
-    return AnimatedBuilder(
-      animation: pawnAnimation,
-      builder: (context, child) {
-        return Positioned(
-          left: pawnAnimation.value.dx,
-          top: pawnAnimation.value.dy,
-          width: pawnWidth,
-          height: pawnWidth,
-          child: child,
-        );
-      },
-      child: GestureDetector(
-        onTap: pawnTap,
-        child: Image.asset("assets/images/maroon-pawn.png"),
-      ),
+    return Stack(
+      children: [
+        // Left
+        Pawn(
+          imageName: 'maroon-pawn.png',
+          trackSpots: tracks.getLeftTrack(1),
+          pawnIndex: 1,
+        ),
+        Pawn(
+          imageName: 'maroon-pawn.png',
+          trackSpots: tracks.getLeftTrack(2),
+          pawnIndex: 2,
+        ),
+        Pawn(
+          imageName: 'maroon-pawn.png',
+          trackSpots: tracks.getLeftTrack(3),
+          pawnIndex: 3,
+        ),
+        Pawn(
+          imageName: 'maroon-pawn.png',
+          trackSpots: tracks.getLeftTrack(4),
+          pawnIndex: 4,
+        ),
+
+        // Top
+        Pawn(
+          imageName: 'dark-pawn.png',
+          trackSpots: tracks.getTopTrack(1),
+          pawnIndex: 1,
+        ),
+        Pawn(
+          imageName: 'dark-pawn.png',
+          trackSpots: tracks.getTopTrack(2),
+          pawnIndex: 2,
+        ),
+        Pawn(
+          imageName: 'dark-pawn.png',
+          trackSpots: tracks.getTopTrack(3),
+          pawnIndex: 3,
+        ),
+        Pawn(
+          imageName: 'dark-pawn.png',
+          trackSpots: tracks.getTopTrack(4),
+          pawnIndex: 4,
+        ),
+
+        // Right
+        Pawn(
+          imageName: 'orange-pawn.png',
+          trackSpots: tracks.getRightTrack(1),
+          pawnIndex: 1,
+        ),
+        Pawn(
+          imageName: 'orange-pawn.png',
+          trackSpots: tracks.getRightTrack(2),
+          pawnIndex: 2,
+        ),
+        Pawn(
+          imageName: 'orange-pawn.png',
+          trackSpots: tracks.getRightTrack(3),
+          pawnIndex: 3,
+        ),
+        Pawn(
+          imageName: 'orange-pawn.png',
+          trackSpots: tracks.getRightTrack(4),
+          pawnIndex: 4,
+        ),
+
+        // Bottom
+        Pawn(
+          imageName: 'yellow-pawn.png',
+          trackSpots: tracks.getBottomTrack(1),
+          pawnIndex: 1,
+        ),
+        Pawn(
+          imageName: 'yellow-pawn.png',
+          trackSpots: tracks.getBottomTrack(2),
+          pawnIndex: 2,
+        ),
+        Pawn(
+          imageName: 'yellow-pawn.png',
+          trackSpots: tracks.getBottomTrack(3),
+          pawnIndex: 3,
+        ),
+        Pawn(
+          imageName: 'yellow-pawn.png',
+          trackSpots: tracks.getBottomTrack(4),
+          pawnIndex: 4,
+        ),
+      ],
     );
   }
 }
