@@ -8,12 +8,12 @@ import '../constants.dart';
 import 'pawnPainter.dart';
 import 'dart:ui' as ui;
 
-class Pawns extends StatefulWidget {
+class PawnSet extends StatefulWidget {
   @override
-  _PawnsState createState() => _PawnsState();
+  _PawnSetState createState() => _PawnSetState();
 }
 
-class _PawnsState extends State<Pawns> with TickerProviderStateMixin {
+class _PawnSetState extends State<PawnSet> with TickerProviderStateMixin {
   Tracks tracks = Tracks();
 
   @override

@@ -1,14 +1,11 @@
 import 'package:ThayamGame/tracks.dart';
+import 'package:ThayamGame/widgets/playerArea.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter/painting.dart' show decodeImageFromList;
+import '../common.dart';
 import '../constants.dart';
 import '../widgets/board.dart';
-import '../widgets/pawnPainter.dart';
-import '../widgets/pawns.dart';
+import '../widgets/pawnSet.dart';
 import '../tracks.dart';
-import '../widgets/pawn.dart';
 
 class Game extends StatefulWidget {
   @override
@@ -23,46 +20,14 @@ class _GameState extends State<Game> {
     super.initState();
   }
 
-  void initTracks() {
-    tracks.initializeTracks();
-
-    trackLeft = tracks.getLeftTrack(4);
-    trackTop = tracks.getTopTrack(4);
-    trackRight = tracks.getRightTrack(4);
-    trackBottom = tracks.getBottomTrack(1);
-  }
-
-  Size getBoardSize(BuildContext context) {
-    return Size(10, 10);
-  }
-
-  void initBoardSizes(double screenWidth, double screenHeight) {
-    if (screenWidth > screenHeight) {
-      bWidth = screenHeight - (screenHeight * 0.25);
-      bHeight = bWidth;
-    } else {
-      bWidth = screenWidth - 20;
-      bHeight = bWidth;
-    }
-
-    boardOffsetLeft = (screenWidth - bWidth) / 2;
-    boardOffsetTop = (screenHeight - bHeight) / 2;
-    bSquareWidth = bWidth / 15;
-
-    pawnWidth = bSquareWidth * 1.2;
-    pawnOffsetLeft = bSquareWidth * 0.1;
-    pawnOffsetTop = bSquareWidth * 0.3;
-
-    initTracks();
-  }
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    initBoardSizes(
+    Common().initBoardSizes(
       MediaQuery.of(context).size.width,
       MediaQuery.of(context).size.height,
     );
+    tracks = Common().initTracks();
 
     print('Game build called');
 
@@ -81,13 +46,13 @@ class _GameState extends State<Game> {
           height: double.infinity,
           child: Stack(
             alignment: Alignment.topLeft,
-//            overflow: Overflow.visible,
+            overflow: Overflow.visible,
             children: <Widget>[
               CustomPaint(
-                //size: getBoardSize(context),
                 painter: Board(),
               ),
-              Pawns(),
+              PawnSet(),
+              PlayerArea(),
             ],
           ),
         ),

@@ -12,6 +12,13 @@ double pawnOffsetTop = 0.0;
 double boardOffsetLeft = 0;
 double boardOffsetTop = 0;
 
+double playerStageWidth = 0;
+double playerStageHeight = 0;
+double playerStageGap = 0;
+
+double diceWidth = 0;
+double diceHeight = 0;
+
 List<Spot> trackLeft = [];
 List<Spot> trackTop = [];
 List<Spot> trackRight = [];
