@@ -5,6 +5,7 @@ bool testPaint = false;
 double bWidth = 0;
 double bHeight = 0;
 double bSquareWidth = 0;
+double bSmallCircleWidth = 0;
 double pawnWidth = 0;
 double pawnOffsetLeft = 0.0;
 double pawnOffsetTop = 0.0;
@@ -18,6 +19,9 @@ double playerStageGap = 0;
 
 double diceWidth = 0;
 double diceHeight = 0;
+
+List<int> score = [0, 0, 0, 0];
+enum Side { Bottom, Left, Top, Right }
 
 List<Spot> trackLeft = [];
 List<Spot> trackTop = [];
@@ -36,6 +40,10 @@ Paint commonStroke2 = new Paint()
 
 Paint commonPaint = new Paint()
   ..color = Colors.white54
+  ..style = PaintingStyle.fill;
+
+Paint whitePaint = new Paint()
+  ..color = Colors.white
   ..style = PaintingStyle.fill;
 
 //    commonPaint = new Paint()

@@ -11,7 +11,7 @@ class PlayerArea extends StatelessWidget {
           left: boardOffsetLeft,
           top: boardOffsetTop - playerStageHeight - playerStageGap,
           child: PlayerBox(
-            stageSide: 'left',
+            stageSide: Side.Left,
             playerImage: 'player-maroon',
           ),
         ),
@@ -19,7 +19,7 @@ class PlayerArea extends StatelessWidget {
           left: boardOffsetLeft,
           top: boardOffsetTop + bHeight + playerStageGap,
           child: PlayerBox(
-            stageSide: 'left',
+            stageSide: Side.Bottom,
             playerImage: 'player-yellow',
           ),
         ),
@@ -27,7 +27,7 @@ class PlayerArea extends StatelessWidget {
           left: boardOffsetLeft + bWidth - playerStageWidth,
           top: boardOffsetTop - playerStageHeight - playerStageGap,
           child: PlayerBox(
-            stageSide: 'right',
+            stageSide: Side.Top,
             playerImage: 'player-dark',
           ),
         ),
@@ -35,7 +35,7 @@ class PlayerArea extends StatelessWidget {
           left: boardOffsetLeft + bWidth - playerStageWidth,
           top: boardOffsetTop + bHeight + playerStageGap,
           child: PlayerBox(
-            stageSide: 'right',
+            stageSide: Side.Right,
             playerImage: 'player-orange',
           ),
         ),

@@ -1,12 +1,11 @@
 import 'package:ThayamGame/constants.dart';
 import 'package:flutter/material.dart';
-
 import 'dice.dart';
 
 class PlayerBox extends StatefulWidget {
   PlayerBox({Key key, this.stageSide, this.playerImage}) : super(key: key);
 
-  final String stageSide;
+  final Side stageSide;
   final String playerImage;
   @override
   _PlayerBoxState createState() => _PlayerBoxState();
@@ -15,7 +14,7 @@ class PlayerBox extends StatefulWidget {
 class _PlayerBoxState extends State<PlayerBox> {
   @override
   Widget build(BuildContext context) {
-    if (widget.stageSide == 'left') {
+    if (widget.stageSide == Side.Left || widget.stageSide == Side.Bottom) {
       return Container(
         width: playerStageWidth,
         height: playerStageHeight,
@@ -32,12 +31,14 @@ class _PlayerBoxState extends State<PlayerBox> {
             PlayerIcon(
               playerIconName: widget.playerImage,
             ),
-            Dice(),
+            Dice(
+              playerSide: widget.stageSide,
+            ),
           ],
         ),
       );
     } else {
-      //right
+      // Side.Right (OR) Side.Top
       return Container(
         width: playerStageWidth,
         height: playerStageHeight,
@@ -51,7 +52,9 @@ class _PlayerBoxState extends State<PlayerBox> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Dice(),
+            Dice(
+              playerSide: widget.stageSide,
+            ),
             PlayerIcon(
               playerIconName: widget.playerImage,
             ),

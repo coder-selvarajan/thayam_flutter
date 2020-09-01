@@ -493,10 +493,10 @@ class Tracks {
     return [
       topStage[pawnNumber - 1],
       ...topStart,
-//      ...leftMountain,
-//      ...bottomMountain,
-//      ...rightMountain,
-//      ...topEnd
+      ...leftMountain,
+      ...bottomMountain,
+      ...rightMountain,
+      ...topEnd
     ];
   }
 
@@ -504,10 +504,10 @@ class Tracks {
     return [
       rightStage[pawnNumber - 1],
       ...rightStart,
-//      ...topMountain,
-//      ...leftMountain,
-//      ...bottomMountain,
-//      ...rightEnd
+      ...topMountain,
+      ...leftMountain,
+      ...bottomMountain,
+      ...rightEnd
     ];
   }
 }

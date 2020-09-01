@@ -9,13 +9,14 @@ class Common {
       bWidth = screenHeight - (screenHeight * 0.4);
       bHeight = bWidth;
     } else {
-      bWidth = screenWidth - 20;
+      bWidth = screenWidth - 0;
       bHeight = bWidth;
     }
 
     boardOffsetLeft = (screenWidth - bWidth) / 2;
     boardOffsetTop = (screenHeight - bHeight) / 2;
     bSquareWidth = bWidth / 15;
+    bSmallCircleWidth = bSquareWidth * 0.14;
 
     pawnWidth = bSquareWidth * 1.2;
     pawnOffsetLeft = bSquareWidth * 0.1;

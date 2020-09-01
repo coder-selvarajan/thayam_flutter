@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../tracks.dart';
@@ -9,8 +8,10 @@ class Pawn extends StatefulWidget {
   final String imageName;
   final List<Spot> trackSpots;
   final int pawnIndex;
+  final Side pawnSide;
 
-  const Pawn({Key key, this.imageName, this.trackSpots, this.pawnIndex})
+  const Pawn(
+      {Key key, this.imageName, this.trackSpots, this.pawnSide, this.pawnIndex})
       : super(key: key);
 
   @override
@@ -28,7 +29,7 @@ class _PawnState extends State<Pawn> with TickerProviderStateMixin {
 
   int trackIndex = 0;
   List<Spot> Spots = [];
-  int score = 0;
+  int tempScore = 0;
 
   @override
   void initState() {
@@ -55,7 +56,7 @@ class _PawnState extends State<Pawn> with TickerProviderStateMixin {
           status == AnimationStatus.dismissed) {
         trackIndex++;
 //        sleep(Duration(milliseconds: 100));
-        if (score > 0) {
+        if (tempScore > 0) {
           pawnTap();
         }
       }
@@ -69,15 +70,15 @@ class _PawnState extends State<Pawn> with TickerProviderStateMixin {
   }
 
   pawnTap() {
-    if (score == 0) {
-      score = new Random().nextInt(5) + 1;
+    if (tempScore == 0) {
+//      tempScore = new Random().nextInt(5) + 1;
+      tempScore = score[widget.pawnSide.index];
+      print("Score = $tempScore");
     }
-    score--;
+    tempScore--;
     if (trackIndex >= Spots.length - 1) {
       return;
     }
-
-    print("Score = $score");
 
 //    print("pawnPos: $trackIndex");
 //    print("pawnController Status: ${pawnController.status}");

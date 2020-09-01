@@ -11,11 +11,88 @@ class Board extends CustomPainter {
 
     drawBoard();
     drawAllSquares();
-    if (!testPaint) {
-      drawCornerCross();
-      drawMidCross();
-    }
+    drawCornerCross();
+    drawMidCross();
     drawPawnStage();
+    drawSmallCircles();
+  }
+
+  drawSmallCircles() {
+    // Left
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (1 * bSquareWidth),
+        boardOffsetTop + (7 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (2 * bSquareWidth),
+        boardOffsetTop + (7 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (3 * bSquareWidth),
+        boardOffsetTop + (7 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (4 * bSquareWidth),
+        boardOffsetTop + (7 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (5 * bSquareWidth),
+        boardOffsetTop + (7 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (6 * bSquareWidth),
+        boardOffsetTop + (7 * bSquareWidth), bSmallCircleWidth);
+
+    // Top
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (8 * bSquareWidth),
+        boardOffsetTop + (1 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (8 * bSquareWidth),
+        boardOffsetTop + (2 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (8 * bSquareWidth),
+        boardOffsetTop + (3 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (8 * bSquareWidth),
+        boardOffsetTop + (4 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (8 * bSquareWidth),
+        boardOffsetTop + (5 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (8 * bSquareWidth),
+        boardOffsetTop + (6 * bSquareWidth), bSmallCircleWidth);
+
+    // Right
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (9 * bSquareWidth),
+        boardOffsetTop + (8 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (10 * bSquareWidth),
+        boardOffsetTop + (8 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (11 * bSquareWidth),
+        boardOffsetTop + (8 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (12 * bSquareWidth),
+        boardOffsetTop + (8 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (13 * bSquareWidth),
+        boardOffsetTop + (8 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (14 * bSquareWidth),
+        boardOffsetTop + (8 * bSquareWidth), bSmallCircleWidth);
+
+    // Top
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (7 * bSquareWidth),
+        boardOffsetTop + (9 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (7 * bSquareWidth),
+        boardOffsetTop + (10 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (7 * bSquareWidth),
+        boardOffsetTop + (11 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (7 * bSquareWidth),
+        boardOffsetTop + (12 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (7 * bSquareWidth),
+        boardOffsetTop + (13 * bSquareWidth), bSmallCircleWidth);
+
+    drawCircle(whitePaint, commonStroke, boardOffsetLeft + (7 * bSquareWidth),
+        boardOffsetTop + (14 * bSquareWidth), bSmallCircleWidth);
   }
 
   drawPawnStage() {
