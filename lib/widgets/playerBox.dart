@@ -19,10 +19,10 @@ class _PlayerBoxState extends State<PlayerBox> {
         width: playerStageWidth,
         height: playerStageHeight,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.5),
+          color: playerColorsLight[widget.stageSide.index],
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(15.0),
-            bottomRight: Radius.circular(15.0),
+            topRight: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
           ),
         ),
         child: Row(
@@ -43,10 +43,10 @@ class _PlayerBoxState extends State<PlayerBox> {
         width: playerStageWidth,
         height: playerStageHeight,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.5),
+          color: playerColorsLight[widget.stageSide.index],
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15.0),
-            bottomLeft: Radius.circular(15.0),
+            topLeft: Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
           ),
         ),
         child: Row(

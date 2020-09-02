@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import "package:flutter/material.dart";
 import 'package:ThayamGame/constants.dart';
+import 'dart:ui' as ui;
 
 class Board extends CustomPainter {
   Canvas bCanvas;
@@ -15,6 +18,57 @@ class Board extends CustomPainter {
     drawMidCross();
     drawPawnStage();
     drawSmallCircles();
+
+//    writeParagraph();
+//    writeText();
+  }
+
+  writeText() {
+    final textStyle = TextStyle(
+      color: Colors.black,
+      fontSize: 12.9,
+    );
+    final textSpan = TextSpan(
+      text: 'Selvarajan',
+      style: textStyle,
+    );
+    final textPainter = TextPainter(
+      text: textSpan,
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout(
+      minWidth: 0,
+      maxWidth: 6 * bSquareWidth,
+    );
+
+//    final offset = Offset(
+//        boardOffsetLeft + ((6 * bSquareWidth) / 2) - (textPainter.width / 2),
+//        boardOffsetTop + 14.2 * bSquareWidth);
+    final offset = Offset(150, 350);
+    bCanvas.save();
+    bCanvas.translate(10, 30);
+    bCanvas.rotate(pi / 0.47);
+    textPainter.paint(bCanvas, offset);
+  }
+
+  writeParagraph() {
+    final textStyle = ui.TextStyle(
+      color: Colors.black54,
+      fontSize: 12.9,
+    );
+    final paragraphStyle = ui.ParagraphStyle(
+      textDirection: TextDirection.ltr,
+    );
+    final paragraphBuilder = ui.ParagraphBuilder(paragraphStyle)
+      ..pushStyle(textStyle)
+      ..addText('Player1');
+
+    final paragraph = paragraphBuilder.build();
+    final constraints = ui.ParagraphConstraints(width: 5 * bSquareWidth);
+    paragraph.layout(constraints);
+    final offset = Offset(
+        boardOffsetLeft + 0 * bSquareWidth, boardOffsetTop + 14 * bSquareWidth);
+    bCanvas.drawParagraph(paragraph, offset);
   }
 
   drawSmallCircles() {

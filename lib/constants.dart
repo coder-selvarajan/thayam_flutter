@@ -71,5 +71,13 @@ Paint rightPaint = new Paint()
   ..style = PaintingStyle.fill;
 
 Paint bottomPaint = new Paint()
-  ..color = Color(0xEEF7CA18)
+//  ..color = Color(0xEEF7CA18)
+  ..color = Color(0xEEF7BD00)
   ..style = PaintingStyle.fill;
+
+List<Color> playerColorsLight = [
+  Color(0xAAFAEAB8),
+  Color(0x6FFCE2E2),
+  Color(0xAACBC1AA),
+  Color(0xAAFCE0BB),
+];
